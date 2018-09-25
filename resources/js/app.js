@@ -1,3 +1,4 @@
+// Grabbing data from giphyAPI
 let getData = () => {
   let APIkey = 'DZHQPTzFavUsqcCzDeyPGT3PSC2fUNUv';
   let searchTerm = $('.search-text').val().trim();
@@ -12,8 +13,10 @@ let getData = () => {
   $('.search-text').val('');
 };
 
+// Generating images
 let imageGenerator = (i, giphy) => {
     let image = $('<img>');
+
     image.attr({ src: giphy[i].images.fixed_height_still.url });
     image.attr({ class: 'gif' });
     image.attr({ 'data-state': 'still' });
@@ -23,32 +26,33 @@ let imageGenerator = (i, giphy) => {
     $('.main-content').append(image);
 }
 
+// Callback function pasted into ajax
 let cbGifs = response => {
   let giphy = response.data;
   $('.main-content').empty();
-
+  // Looping through object images
   for (i in giphy) {
     imageGenerator(i, giphy);
-  }
+  }// On click function to animate gifs
   $('.gif').on('click', function() {
     let state = $(this).attr('data-state');
-
-    if (state === 'still') {
-      $(this).attr('src', $(this).attr('data-animate'));
-      $(this).attr('data-state', 'animate');
-    } else {
-      $(this).attr('src', $(this).attr('data-still'));
-      $(this).attr('data-state', 'still');
-    }
+    // Ternary condition
+    state === 'still' ? 
+    $(this).attr('src', $(this).attr('data-animate')) &&
+    $(this).attr('data-state', 'animate') : 
+    $(this).attr('src', $(this).attr('data-still')) && 
+    $(this).attr('data-state', 'still');
   });
 };
 
+// Creating button being displayed 
 let addButton = value => {
   $('.newButton').append(
     `<button onclick=buttonData('${encodeURIComponent(value.trim())}')>${value}</button>`
   );
 };
 
+// Storing data inside button generated after user searchTerm
 let buttonData = buttonData => {
   let APIkey = 'DZHQPTzFavUsqcCzDeyPGT3PSC2fUNUv';
   let searchTerm = buttonData;
@@ -60,6 +64,7 @@ let buttonData = buttonData => {
   }).then(cbGifs);
 };
 
+// Fetching data when 'enter' is hit
 $('.search-text').on('keypress', function(event) {
   if (event.which === 13) {
     getData();
