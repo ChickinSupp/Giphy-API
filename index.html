@@ -7,30 +7,30 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <link rel='stylesheet' type='text/css' href='resources/css/reset.css'>
     <link rel='stylesheet' type='text/css' href='resources/css/style.css'>
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB"
-        crossorigin="anonymous"></script>
-    <title>GiphTastic</title>
+    <title>Gif-Tastic</title>
 </head>
 
 <body>
 
-    <header>
+    <header class='main-header'>
         <h1>Search a Gif!</h1>
+            <div class='search-box'>
+                <input class='search-text' type='text' name='search' placeholder='Search..'>
+                <button class='search-btn' onclick='getData()'>
+                    <i class='fas fa-search'></i>
+                </button>
+            </div>
     </header>
 
-    <div class='search-box'>
-        <input class='search-text' type='text' name='search' placeholder='Search..'>
-        <a class='search-btn' href='#'>
-            <i class="fas fa-search"></i>
-        </a>
-    </div>
+    <div class='newButton'></div>
 
+    <section class='main-content'></section>
 
-
-
-
-
-    </div>
+    <script defer src='https://use.fontawesome.com/releases/v5.3.1/js/all.js' integrity='sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB'
+        crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+        crossorigin='anonymous'></script>
+    <script src='resources/js/app.js'></script>
 
 </body>
 
